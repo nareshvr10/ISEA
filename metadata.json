@@ -1,0 +1,6 @@
+{
+  "name": "ISEA - Smart AI-IoT Waste Recycling",
+  "description": "Event-side smart AI-IoT waste recycling machine monitoring, segregation, plastic dewatering/drying/shredding, liquid recovery, and automated sustainability reports.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

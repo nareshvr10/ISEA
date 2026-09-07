@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">आईशिया</string>
+    <string name="app_subtitle">स्मार्ट AI-IoT अपशिष्ट पुनर्चक्रण एवं कार्यक्रम स्थिरता प्रणाली</string>
+    <string name="nav_home">होम</string>
+    <string name="nav_machines">मशीनें</string>
+    <string name="nav_waste">अपशिष्ट</string>
+    <string name="nav_analytics">एनालिटिक्स</string>
+    <string name="nav_profile">प्रोफ़ाइल</string>
+    <string name="total_waste">कुल अपशिष्ट</string>
+    <string name="plastic_collected">प्लास्टिक एकत्र</string>
+    <string name="plastic_shredded">श्रेड किया प्लास्टिक</string>
+    <string name="recovered_liquid">पुनर्प्राप्त/इवेंट तरल</string>
+    <string name="bottles_processed">संसाधित बोतलें</string>
+    <string name="cups_processed">संसाधित कप</string>
+    <string name="containers_processed">कंटेनर</string>
+    <string name="universal_input">सार्वभौमिक अपशिष्ट इनपुट</string>
+    <string name="critical_rule">पारंपरिक श्रेडर में सीधे तरल न भेजें। तरल को पहले अलग किया जाना चाहिए।</string>
+    <string name="daily_report">दैनिक रिपोर्ट</string>
+    <string name="weekly_report">साप्ताहिक रिपोर्ट</string>
+    <string name="monthly_report">मासिक रिपोर्ट</string>
+    <string name="demo_mode_badge">डेमो मोड</string>
+</resources>

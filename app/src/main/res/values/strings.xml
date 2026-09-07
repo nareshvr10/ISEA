@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">ISEA</string>
+    <string name="app_subtitle">Smart AI-IoT Waste Recycling &amp; Event Sustainability System</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_machines">Machines</string>
+    <string name="nav_waste">Waste</string>
+    <string name="nav_analytics">Analytics</string>
+    <string name="nav_profile">Profile</string>
+    
+    <!-- Metrics -->
+    <string name="total_waste">Total Waste</string>
+    <string name="plastic_collected">Plastic Collected</string>
+    <string name="plastic_shredded">Plastic Shredded</string>
+    <string name="recovered_liquid">Recovered/Event Liquid</string>
+    <string name="bottles_processed">Bottles Processed</string>
+    <string name="cups_processed">Cups Processed</string>
+    <string name="containers_processed">Containers Processed</string>
+
+    <!-- Workflow & Rules -->
+    <string name="universal_input">Universal Waste Input</string>
+    <string name="universal_input_desc">Put all event waste into one universal input (no bottle holder, any orientation)</string>
+    <string name="liquid_separation">Liquid Separation</string>
+    <string name="liquid_recovery_tank">Recovered/Event Liquid Tank</string>
+    <string name="plastic_dewatering">Plastic Dewatering</string>
+    <string name="plastic_drying">Plastic Drying</string>
+    <string name="plastic_shredding">Plastic Shredding</string>
+    <string name="critical_rule">DO NOT send free liquid directly into conventional plastic shredder. Liquid separated first.</string>
+
+    <!-- Roles -->
+    <string name="role_admin">Administrator</string>
+    <string name="role_operator">Event Operator</string>
+    <string name="role_user">Event User</string>
+
+    <!-- Reports -->
+    <string name="daily_report">Daily Report</string>
+    <string name="weekly_report">Weekly Report</string>
+    <string name="monthly_report">Monthly Report</string>
+    <string name="view_pdf">View PDF</string>
+    <string name="download_pdf">Download PDF</string>
+    <string name="share_pdf">Share PDF</string>
+
+    <!-- Demo Mode -->
+    <string name="demo_mode_badge">DEMO MODE</string>
+</resources>

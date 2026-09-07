@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">ஐசியா</string>
+    <string name="app_subtitle">ஸ்மார்ட் AI-IoT கழிவு மறுசுழற்சி மற்றும் நிகழ்வு நிலைத்தன்மை அமைப்பு</string>
+    <string name="nav_home">முகப்பு</string>
+    <string name="nav_machines">இயந்திரங்கள்</string>
+    <string name="nav_waste">கழிவுகள்</string>
+    <string name="nav_analytics">பகுப்பாய்வு</string>
+    <string name="nav_profile">சுயவிவரம்</string>
+    <string name="total_waste">மொத்த கழிவு</string>
+    <string name="plastic_collected">பிளாஸ்டிக் சேகரிப்பு</string>
+    <string name="plastic_shredded">நறுக்கப்பட்ட பிளாஸ்டிக்</string>
+    <string name="recovered_liquid">மீட்கப்பட்ட நிகழ்வு திரவம்</string>
+    <string name="bottles_processed">செயல்படுத்தப்பட்ட பாட்டில்கள்</string>
+    <string name="cups_processed">செயல்படுத்தப்பட்ட குவளைகள்</string>
+    <string name="containers_processed">கொள்கலன்கள்</string>
+    <string name="universal_input">பொதுவான கழிவு உள்ளீடு</string>
+    <string name="critical_rule">திரவத்தை நேரடியாக நறுக்கும் இயந்திரத்திற்கு அனுப்ப வேண்டாம். திரவம் முதலில் பிரிக்கப்பட வேண்டும்.</string>
+    <string name="daily_report">தினசரி அறிக்கை</string>
+    <string name="weekly_report">வாராந்திர அறிக்கை</string>
+    <string name="monthly_report">மாதாந்திர அறிக்கை</string>
+    <string name="demo_mode_badge">டெமோ முறை</string>
+</resources>
