@@ -24,12 +24,22 @@ jobs:
           distribution: 'temurin'
           cache: 'gradle'
 
-      - name: Ensure Gradle Wrapper Exists
+      - name: Ensure Gradle Environment & Wrapper Exists
         run: |
           mkdir -p gradle/wrapper
-          curl -fsSL https://raw.githubusercontent.com/gradle/gradle/v8.9.0/gradle/wrapper/gradle-wrapper.jar -o gradle/wrapper/gradle-wrapper.jar
+          if [ ! -f gradle/wrapper/gradle-wrapper.jar ] || [ ! -s gradle/wrapper/gradle-wrapper.jar ]; then
+            curl -fsSL https://raw.githubusercontent.com/gradle/gradle/v8.9.0/gradle/wrapper/gradle-wrapper.jar -o gradle/wrapper/gradle-wrapper.jar
+          fi
           chmod +x gradlew
           ls -lh gradle/wrapper/gradle-wrapper.jar
+          
+          # Ensure android.useAndroidX is set
+          if [ ! -f gradle.properties ]; then
+            echo "android.useAndroidX=true" > gradle.properties
+            echo "android.nonTransitiveRClass=true" >> gradle.properties
+            echo "org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8" >> gradle.properties
+          fi
+          grep -q "android.useAndroidX" gradle.properties || echo "android.useAndroidX=true" >> gradle.properties
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
