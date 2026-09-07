@@ -71,7 +71,7 @@ export const LiquidRecoveryScreen: React.FC<LiquidRecoveryScreenProps> = ({
       </div>
 
       {/* Main Tank Visual Gauge */}
-      <div className="bg-white/95 backdrop-blur-md rounded-2xl p-5 shadow-sm border border-slate-200 flex flex-col sm:flex-row items-center gap-6">
+      <div className="bg-white/85 backdrop-blur-md rounded-2xl p-5 shadow-sm border border-white/70 hover:bg-white/95 transition-all flex flex-col sm:flex-row items-center gap-6">
         {/* Visual Tank Cylindrical Gauge */}
         <div className="relative w-28 h-56 rounded-3xl bg-slate-100 border-4 border-slate-300 overflow-hidden shadow-inner flex flex-col justify-end p-1">
           {/* Fill Animation */}
@@ -170,25 +170,25 @@ export const LiquidRecoveryScreen: React.FC<LiquidRecoveryScreenProps> = ({
 
       {/* Sensor Health Telemetry Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
-        <div className="bg-white rounded-2xl p-3 border border-slate-200 shadow-xs">
+        <div className="bg-white/85 backdrop-blur-md rounded-2xl p-3 border border-white/70 shadow-xs hover:bg-white/95 transition-all">
           <span className="text-[10px] text-slate-400 font-bold uppercase block">Ultrasonic Depth</span>
           <span className="font-black text-slate-900 text-sm mt-0.5 block font-mono">14.2 cm</span>
           <span className="text-[10px] text-emerald-600 font-medium">Accurate to ±1mm</span>
         </div>
 
-        <div className="bg-white rounded-2xl p-3 border border-slate-200 shadow-xs">
+        <div className="bg-white/85 backdrop-blur-md rounded-2xl p-3 border border-white/70 shadow-xs hover:bg-white/95 transition-all">
           <span className="text-[10px] text-slate-400 font-bold uppercase block">Overflow Switch</span>
           <span className="font-black text-emerald-700 text-sm mt-0.5 block">DRY (Safe)</span>
           <span className="text-[10px] text-slate-500">Optical high-level</span>
         </div>
 
-        <div className="bg-white rounded-2xl p-3 border border-slate-200 shadow-xs">
+        <div className="bg-white/85 backdrop-blur-md rounded-2xl p-3 border border-white/70 shadow-xs hover:bg-white/95 transition-all">
           <span className="text-[10px] text-slate-400 font-bold uppercase block">Drain Valve</span>
           <span className="font-black text-slate-900 text-sm mt-0.5 block">CLOSED (12V)</span>
           <span className="text-[10px] text-slate-500">Solenoid ready</span>
         </div>
 
-        <div className="bg-white rounded-2xl p-3 border border-slate-200 shadow-xs">
+        <div className="bg-white/85 backdrop-blur-md rounded-2xl p-3 border border-white/70 shadow-xs hover:bg-white/95 transition-all">
           <span className="text-[10px] text-slate-400 font-bold uppercase block">Liquid Destination</span>
           <span className="font-black text-teal-800 text-sm mt-0.5 block">Mandapam Garden</span>
           <span className="text-[10px] text-teal-600">Eco-reuse pipeline</span>

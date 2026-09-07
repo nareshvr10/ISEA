@@ -137,7 +137,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
       </div>
 
       {/* 2. Machine Status Card */}
-      <div className="bg-white rounded-3xl p-4 sm:p-5 border border-emerald-50 shadow-sm flex items-center justify-between gap-3">
+      <div className="bg-white/85 backdrop-blur-md rounded-3xl p-4 sm:p-5 border border-white/70 shadow-sm flex items-center justify-between gap-3 hover:bg-white/95 transition-all">
         <div className="flex items-center gap-3.5">
           <div className={`w-11 h-11 rounded-2xl flex items-center justify-center font-bold shadow-xs ${
             currentMachine.isOnline 
@@ -170,7 +170,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
       {/* 3. Four Major KPI Cards (Geometric Balance Clean Cards) */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
         {/* Total Waste */}
-        <div className="bg-white p-4 rounded-2xl shadow-sm border border-emerald-50 flex flex-col justify-between">
+        <div className="bg-white/85 backdrop-blur-md p-4 rounded-2xl shadow-sm border border-white/70 flex flex-col justify-between hover:bg-white/95 transition-all">
           <div>
             <p className="text-[10px] font-bold text-emerald-800/50 uppercase mb-1 tracking-wider">
               {getTranslation(lang, 'totalWaste')}
@@ -191,7 +191,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
         </div>
 
         {/* Plastic Collected */}
-        <div className="bg-white p-4 rounded-2xl shadow-sm border border-emerald-50 flex flex-col justify-between">
+        <div className="bg-white/85 backdrop-blur-md p-4 rounded-2xl shadow-sm border border-white/70 flex flex-col justify-between hover:bg-white/95 transition-all">
           <div>
             <p className="text-[10px] font-bold text-emerald-800/50 uppercase mb-1 tracking-wider">
               {getTranslation(lang, 'plastic')}
@@ -214,7 +214,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
         </div>
 
         {/* Plastic Shredded */}
-        <div className="bg-white p-4 rounded-2xl shadow-sm border border-emerald-50 flex flex-col justify-between">
+        <div className="bg-white/85 backdrop-blur-md p-4 rounded-2xl shadow-sm border border-white/70 flex flex-col justify-between hover:bg-white/95 transition-all">
           <div>
             <p className="text-[10px] font-bold text-emerald-800/50 uppercase mb-1 tracking-wider">
               {getTranslation(lang, 'plasticShredded')}
@@ -237,7 +237,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
         {/* Recovered Liquid */}
         <div 
           onClick={onOpenLiquidRecovery}
-          className="bg-white p-4 rounded-2xl shadow-sm border border-emerald-50 flex flex-col justify-between cursor-pointer hover:border-emerald-200 transition-all"
+          className="bg-white/85 backdrop-blur-md p-4 rounded-2xl shadow-sm border border-white/70 flex flex-col justify-between cursor-pointer hover:border-emerald-300 hover:bg-white/95 transition-all"
         >
           <div>
             <p className="text-[10px] font-bold text-emerald-800/50 uppercase mb-1 tracking-wider truncate">
@@ -262,7 +262,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
       </div>
 
       {/* 4. Quick Reports Navigation Bar (Geometric Balance Report Center) */}
-      <div className="bg-white rounded-3xl p-5 border border-emerald-50 shadow-sm">
+      <div className="bg-white/85 backdrop-blur-md rounded-3xl p-5 border border-white/70 shadow-sm hover:bg-white/95 transition-all">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
@@ -370,7 +370,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
       {/* 6. Plastic Processing Live Progress Card */}
       <div 
         onClick={onOpenPlasticProcessing}
-        className="bg-white rounded-3xl p-5 border border-emerald-50 shadow-sm cursor-pointer hover:border-emerald-200 transition-all"
+        className="bg-white/85 backdrop-blur-md rounded-3xl p-5 border border-white/70 shadow-sm cursor-pointer hover:border-emerald-300 hover:bg-white/95 transition-all"
       >
         <div className="flex items-center justify-between mb-4">
           <div>
@@ -418,7 +418,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
       </div>
 
       {/* 7. Smart Bin Monitoring Summary */}
-      <div className="bg-white rounded-3xl p-5 border border-emerald-50 shadow-sm">
+      <div className="bg-white/85 backdrop-blur-md rounded-3xl p-5 border border-white/70 shadow-sm hover:bg-white/95 transition-all">
         <div className="flex items-center justify-between mb-4">
           <div>
             <p className="text-[10px] font-bold text-emerald-800/50 uppercase tracking-widest mb-0.5">Sensors &amp; Fill Levels</p>
@@ -466,7 +466,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
       {/* 8. Recent Alerts & Android Architecture Inspector Quick Access */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {/* Alerts Card */}
-        <div className="bg-white rounded-3xl p-5 border border-emerald-50 shadow-sm space-y-3">
+        <div className="bg-white/85 backdrop-blur-md rounded-3xl p-5 border border-white/70 shadow-sm space-y-3 hover:bg-white/95 transition-all">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <ShieldAlert className="w-4 h-4 text-amber-600" />

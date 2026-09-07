@@ -177,3 +177,18 @@ data class EnvironmentalImpact(
     val waterSavedL: Double = 0.0,
     val sustainabilityScore: Int = 95
 )
+
+typealias EventItem = Event
+typealias PlasticProcessingState = PlasticProcessing
+typealias LiquidRecoveryState = LiquidRecovery
+
+@IgnoreExtraProperties
+data class AlertItem(
+    val id: String = "",
+    val machineId: String = "",
+    val title: String = "",
+    val message: String = "",
+    val severity: String = "WARNING", // INFO, WARNING, CRITICAL
+    val timestamp: String = "",
+    val isResolved: Boolean = false
+)

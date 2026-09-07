@@ -89,4 +89,74 @@ class FirebaseManager {
         val item = detection.copy(id = ref.key ?: System.currentTimeMillis().toString())
         ref.setValue(item).await()
     }
+
+    fun getAllMachinesFlow(): Flow<List<Machine>> = callbackFlow {
+        val ref = database.getReference("machines")
+        val listener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val list = mutableListOf<Machine>()
+                for (child in snapshot.children) {
+                    child.getValue(Machine::class.java)?.let { list.add(it) }
+                }
+                trySend(list)
+            }
+            override fun onCancelled(error: DatabaseError) { close(error.toException()) }
+        }
+        ref.addValueEventListener(listener)
+        awaitClose { ref.removeEventListener(listener) }
+    }
+
+    fun getCurrentEventFlow(): Flow<EventItem?> = callbackFlow {
+        val ref = database.getReference("currentEvent")
+        val listener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                trySend(snapshot.getValue(EventItem::class.java))
+            }
+            override fun onCancelled(error: DatabaseError) { close(error.toException()) }
+        }
+        ref.addValueEventListener(listener)
+        awaitClose { ref.removeEventListener(listener) }
+    }
+
+    fun getRecentDetectionsFlow(machineId: String): Flow<List<WasteDetection>> = callbackFlow {
+        val ref = database.getReference("wasteDetections").orderByChild("machineId").equalTo(machineId).limitToLast(20)
+        val listener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val list = mutableListOf<WasteDetection>()
+                for (child in snapshot.children) {
+                    child.getValue(WasteDetection::class.java)?.let { list.add(it) }
+                }
+                trySend(list.reversed())
+            }
+            override fun onCancelled(error: DatabaseError) { close(error.toException()) }
+        }
+        ref.addValueEventListener(listener)
+        awaitClose { ref.removeEventListener(listener) }
+    }
+
+    fun getAlertsFlow(machineId: String): Flow<List<AlertItem>> = callbackFlow {
+        val ref = database.getReference("alerts").orderByChild("machineId").equalTo(machineId)
+        val listener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val list = mutableListOf<AlertItem>()
+                for (child in snapshot.children) {
+                    child.getValue(AlertItem::class.java)?.let { list.add(it) }
+                }
+                trySend(list)
+            }
+            override fun onCancelled(error: DatabaseError) { close(error.toException()) }
+        }
+        ref.addValueEventListener(listener)
+        awaitClose { ref.removeEventListener(listener) }
+    }
+
+    companion object {
+        @Volatile
+        private var INSTANCE: FirebaseManager? = null
+
+        fun getInstance(): FirebaseManager =
+            INSTANCE ?: synchronized(this) {
+                INSTANCE ?: FirebaseManager().also { INSTANCE = it }
+            }
+    }
 }

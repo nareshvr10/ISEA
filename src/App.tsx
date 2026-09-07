@@ -40,11 +40,13 @@ import { PlasticProcessingScreen } from './screens/PlasticProcessingScreen';
 import { LiquidRecoveryScreen } from './screens/LiquidRecoveryScreen';
 import { CertificateScreen } from './screens/CertificateScreen';
 import { NotificationsScreen } from './screens/NotificationsScreen';
+import { SplashScreen } from './screens/SplashScreen';
 
 import { Smartphone, Monitor } from 'lucide-react';
 
 export function App() {
   // Authentication & User State
+  const [showSplashScreen, setShowSplashScreen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [currentUser, setCurrentUser] = useState<User>(mockUsers[1]); // Operator
   const [lang, setLang] = useState<Language>('en');
@@ -167,6 +169,15 @@ export function App() {
     setActivePdfReport(r);
   };
 
+  if (showSplashScreen) {
+    return (
+      <SplashScreen
+        onFinish={() => setShowSplashScreen(false)}
+        onSkip={() => setShowSplashScreen(false)}
+      />
+    );
+  }
+
   if (!isAuthenticated) {
     return (
       <LoginScreen
@@ -185,11 +196,20 @@ export function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F4F9F8] text-[#2D3436] flex flex-col items-center justify-start relative overflow-x-hidden">
-      {/* Geometric Balance Ambient Gradient Backdrop */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-[-120px] right-[-120px] w-[520px] h-[520px] bg-gradient-to-br from-emerald-200/50 via-teal-100/40 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-[-120px] left-[-120px] w-[520px] h-[520px] bg-gradient-to-tr from-teal-200/45 via-emerald-100/35 to-transparent rounded-full blur-3xl" />
+    <div className="min-h-screen text-[#2D3436] flex flex-col items-center justify-start relative overflow-x-hidden">
+      {/* PRIMARY AND FIXED BACKGROUND IMAGE - ISEA ECO-TECH BRAND IDENTITY */}
+      <div 
+        className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat pointer-events-none select-none"
+        style={{ backgroundImage: "url('/ecotech_bg.jpg')" }}
+      >
+        {/* Subtle, translucent wash strictly preserving the original visual elements:
+            - Leaves (top-left)
+            - Eco-tech network icons (top-right)
+            - Recycling symbol (mid-right)
+            - Event / Wedding venue visual (bottom-left)
+            - Green/teal wave design & sustainability globe (bottom-right)
+        */}
+        <div className="absolute inset-0 bg-white/15 backdrop-blur-[0.5px]" />
       </div>
 
       {/* Frame View Toggle Floating Button (Top-Right) */}
@@ -220,13 +240,23 @@ export function App() {
       <div
         className={`relative z-10 w-full transition-all duration-300 ${
           isMobileFrame
-            ? 'max-w-md my-4 min-h-[840px] rounded-[2.5rem] shadow-xl border-[8px] border-slate-800 bg-[#F4F9F8] overflow-hidden flex flex-col'
+            ? 'max-w-md my-4 min-h-[840px] rounded-[2.5rem] shadow-2xl border-[8px] border-slate-800 bg-transparent overflow-hidden flex flex-col'
             : 'max-w-5xl min-h-screen flex flex-col'
         }`}
       >
+        {/* In Mobile Frame mode: duplicate the eco-tech fixed background directly inside the frame */}
+        {isMobileFrame && (
+          <div 
+            className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat pointer-events-none"
+            style={{ backgroundImage: "url('/ecotech_bg.jpg')" }}
+          >
+            <div className="absolute inset-0 bg-white/15 backdrop-blur-[0.5px]" />
+          </div>
+        )}
+
         {/* Mobile Camera Notch (only in mobile frame mode) */}
         {isMobileFrame && (
-          <div className="w-full bg-slate-900 h-6 flex items-center justify-center shrink-0">
+          <div className="w-full bg-slate-900 h-6 flex items-center justify-center shrink-0 z-20">
             <div className="w-20 h-3 bg-black rounded-full" />
           </div>
         )}
@@ -350,6 +380,7 @@ export function App() {
                   onToggleDemoMode={() => setIsDemoMode(!isDemoMode)}
                   onLogout={() => setIsAuthenticated(false)}
                   onOpenCodeExplorer={() => setIsCodeModalOpen(true)}
+                  onShowSplash={() => setShowSplashScreen(true)}
                 />
               )}
             </>

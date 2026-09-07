@@ -86,7 +86,7 @@ export const CertificateScreen: React.FC<CertificateScreenProps> = ({
       </div>
 
       {/* Visual Certificate Card Frame */}
-      <div className="relative rounded-3xl bg-white p-6 sm:p-8 shadow-xl border-4 border-emerald-600/30 overflow-hidden text-center space-y-4">
+      <div className="relative rounded-3xl bg-white/90 backdrop-blur-md p-6 sm:p-8 shadow-xl border-4 border-emerald-600/30 overflow-hidden text-center space-y-4">
         {/* Corner Decorative Elements */}
         <div className="absolute top-0 left-0 w-16 h-16 bg-gradient-to-br from-emerald-600/20 to-transparent rounded-br-3xl pointer-events-none" />
         <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-emerald-600/20 to-transparent rounded-bl-3xl pointer-events-none" />

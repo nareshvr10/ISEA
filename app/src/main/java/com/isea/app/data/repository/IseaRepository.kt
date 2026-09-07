@@ -9,19 +9,45 @@ import kotlinx.coroutines.flow.Flow
  */
 class IseaRepository(private val firebase: FirebaseManager) {
 
-    fun observeMachine(machineId: String): Flow<Machine?> {
+    fun getMachineFlow(machineId: String): Flow<Machine?> {
         return firebase.getMachineFlow(machineId)
     }
 
-    fun observePlasticProcessing(machineId: String): Flow<PlasticProcessing?> {
+    fun getAllMachinesFlow(): Flow<List<Machine>> {
+        return firebase.getAllMachinesFlow()
+    }
+
+    fun getCurrentEventFlow(): Flow<EventItem?> {
+        return firebase.getCurrentEventFlow()
+    }
+
+    fun getPlasticProcessingFlow(machineId: String): Flow<PlasticProcessingState?> {
         return firebase.getPlasticProcessingFlow(machineId)
     }
 
-    fun observeLiquidRecovery(machineId: String): Flow<LiquidRecovery?> {
+    fun getLiquidRecoveryFlow(machineId: String): Flow<LiquidRecoveryState?> {
         return firebase.getLiquidRecoveryFlow(machineId)
+    }
+
+    fun getRecentDetectionsFlow(machineId: String): Flow<List<WasteDetection>> {
+        return firebase.getRecentDetectionsFlow(machineId)
+    }
+
+    fun getAlertsFlow(machineId: String): Flow<List<AlertItem>> {
+        return firebase.getAlertsFlow(machineId)
     }
 
     suspend fun saveDetection(detection: WasteDetection) {
         firebase.recordWasteDetection(detection)
+    }
+
+    companion object {
+        @Volatile
+        private var INSTANCE: IseaRepository? = null
+
+        fun getInstance(firebase: FirebaseManager): IseaRepository =
+            INSTANCE ?: synchronized(this) {
+                INSTANCE ?: IseaRepository(firebase).also { INSTANCE = it }
+            }
     }
 }

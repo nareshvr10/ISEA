@@ -33,18 +33,18 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ onLoginSuccess, lang }
   };
 
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center p-4 overflow-hidden bg-slate-900">
-      {/* Primary Eco-Tech Vertical Background Image */}
+    <div className="relative min-h-screen w-full flex items-center justify-center p-4 overflow-hidden">
+      {/* Primary Eco-Tech Vertical Background Image (Fixed, Preserving Full Visual Composition) */}
       <div 
-        className="absolute inset-0 z-0 bg-cover bg-center transition-opacity duration-700 scale-100"
+        className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat transition-opacity duration-700 pointer-events-none"
         style={{ backgroundImage: "url('/ecotech_bg.jpg')" }}
       >
-        {/* Soft translucent gradient overlay preserving the background composition while ensuring contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-emerald-950/30 to-slate-950/80 backdrop-blur-[1px]" />
+        {/* Soft, minimal translucent overlay preserving leaves, tech nodes, recycling symbol, wedding venue, and sustainability globe */}
+        <div className="absolute inset-0 bg-white/15 backdrop-blur-[0.5px]" />
       </div>
 
-      {/* Main Glassmorphic Login Card */}
-      <div className="relative z-10 w-full max-w-md bg-white/90 backdrop-blur-xl rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/60 text-slate-800 animate-in fade-in zoom-in-95 duration-500">
+      {/* Main Glassmorphic Login Card positioned in the open central sky region */}
+      <div className="relative z-10 w-full max-w-md bg-white/85 backdrop-blur-xl rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/70 text-slate-800 animate-in fade-in zoom-in-95 duration-500">
         {/* Top Eco Branding */}
         <div className="text-center mb-6">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-600 via-emerald-500 to-teal-600 text-white font-black text-xl shadow-lg shadow-emerald-600/30 mb-3 ring-4 ring-emerald-50">

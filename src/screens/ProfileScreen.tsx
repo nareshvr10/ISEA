@@ -12,7 +12,9 @@ import {
   Check, 
   Award, 
   Database,
-  ExternalLink
+  ExternalLink,
+  Sparkles,
+  Download
 } from 'lucide-react';
 
 interface ProfileScreenProps {
@@ -24,6 +26,7 @@ interface ProfileScreenProps {
   onToggleDemoMode: () => void;
   onLogout: () => void;
   onOpenCodeExplorer: () => void;
+  onShowSplash?: () => void;
 }
 
 export const ProfileScreen: React.FC<ProfileScreenProps> = ({
@@ -34,12 +37,13 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
   isDemoMode,
   onToggleDemoMode,
   onLogout,
-  onOpenCodeExplorer
+  onOpenCodeExplorer,
+  onShowSplash
 }) => {
   return (
     <div className="space-y-4 pb-24 animate-in fade-in duration-300">
       {/* User Header Profile Card */}
-      <div className="bg-white/95 backdrop-blur-md rounded-2xl p-5 shadow-sm border border-slate-200 flex items-center gap-4">
+      <div className="bg-white/85 backdrop-blur-md rounded-2xl p-5 shadow-sm border border-white/70 flex items-center gap-4 hover:bg-white/95 transition-all">
         <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-700 text-white flex items-center justify-center font-black text-xl shadow-md">
           {currentUser.name.charAt(0)}
         </div>
@@ -58,7 +62,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
       </div>
 
       {/* Role Switching for Live Testing */}
-      <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-sm border border-slate-200 space-y-2">
+      <div className="bg-white/85 backdrop-blur-md rounded-2xl p-4 shadow-sm border border-white/70 space-y-2 hover:bg-white/95 transition-all">
         <div className="flex items-center gap-2">
           <Shield className="w-4 h-4 text-emerald-700" />
           <h3 className="font-bold text-xs uppercase tracking-wider text-slate-800">
@@ -90,7 +94,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
       </div>
 
       {/* Language Selector */}
-      <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-sm border border-slate-200 space-y-2">
+      <div className="bg-white/85 backdrop-blur-md rounded-2xl p-4 shadow-sm border border-white/70 space-y-2 hover:bg-white/95 transition-all">
         <div className="flex items-center gap-2">
           <Globe className="w-4 h-4 text-emerald-700" />
           <h3 className="font-bold text-xs uppercase tracking-wider text-slate-800">
@@ -123,7 +127,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
       </div>
 
       {/* Demo Mode / Firebase Sync */}
-      <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-sm border border-slate-200 flex items-center justify-between">
+      <div className="bg-white/85 backdrop-blur-md rounded-2xl p-4 shadow-sm border border-white/70 flex items-center justify-between hover:bg-white/95 transition-all">
         <div className="space-y-0.5">
           <span className="font-bold text-xs text-slate-800 block">
             {isDemoMode ? 'Simulated IoT Hardware' : 'Firebase Cloud Realtime DB'}
@@ -145,24 +149,67 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
         </button>
       </div>
 
-      {/* Android Jetpack Compose Code Inspector */}
-      <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-sm border border-slate-200 flex items-center justify-between">
+      {/* Visual Identity & Splash Screen */}
+      <div className="bg-white/85 backdrop-blur-md rounded-2xl p-4 shadow-sm border border-white/70 flex items-center justify-between hover:bg-white/95 transition-all">
         <div className="space-y-0.5">
           <span className="font-bold text-xs text-slate-800 block">
-            Native Kotlin Android Project Files
+            ISEA Fixed Eco-Tech Background &amp; Splash
           </span>
           <p className="text-[11px] text-slate-500">
-            AndroidManifest, Models.kt, FirebaseManager, Native PDF Generator
+            Preview animated splash screen with the fixed brand background
           </p>
         </div>
 
-        <button
-          onClick={onOpenCodeExplorer}
-          className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 text-white font-bold text-xs rounded-xl hover:bg-slate-800 transition-colors"
-        >
-          <FileCode className="w-3.5 h-3.5 text-emerald-400" />
-          <span>Inspect Files</span>
-        </button>
+        {onShowSplash && (
+          <button
+            onClick={onShowSplash}
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-700 text-white font-bold text-xs rounded-xl hover:bg-emerald-800 transition-colors shadow-xs"
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>View Splash</span>
+          </button>
+        )}
+      </div>
+
+      {/* Android Jetpack Compose Code Inspector & APK Builder */}
+      <div className="bg-white/85 backdrop-blur-md rounded-2xl p-4 shadow-sm border border-white/70 space-y-3 hover:bg-white/95 transition-all">
+        <div className="flex items-center justify-between">
+          <div className="space-y-0.5">
+            <span className="font-bold text-xs text-slate-800 flex items-center gap-1.5">
+              <span>Android APK &amp; Native Kotlin Project</span>
+              <span className="px-1.5 py-0.2 bg-emerald-100 text-emerald-800 text-[10px] font-bold rounded-full">CI/CD Ready</span>
+            </span>
+            <p className="text-[11px] text-slate-500">
+              Jetpack Compose • Material 3 • Automated GitHub Actions APK Builder
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <a
+              href="/ISEA-Android-Project.zip"
+              download="ISEA-Android-Project.zip"
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs rounded-xl transition-all shadow-xs"
+              title="Download Android Studio Project (.ZIP)"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>Download .ZIP</span>
+            </a>
+            <button
+              onClick={onOpenCodeExplorer}
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl transition-colors shadow-xs"
+            >
+              <FileCode className="w-3.5 h-3.5 text-emerald-400" />
+              <span>APK Guide</span>
+            </button>
+          </div>
+        </div>
+
+        <div className="p-2.5 bg-emerald-50/70 border border-emerald-200/60 rounded-xl text-[11px] text-emerald-900 flex items-start gap-2">
+          <div className="w-1.5 h-1.5 rounded-full bg-emerald-600 mt-1.5 shrink-0" />
+          <span>
+            <strong>Download APK via GitHub:</strong> Export or push this project to GitHub. The included GitHub Actions workflow (<code>.github/workflows/build-apk.yml</code>) automatically builds <code>ISEA-v1.0.0-debug.apk</code> under your repository's <strong>Actions &gt; Artifacts</strong> tab!
+          </span>
+        </div>
       </div>
 
       {/* Logout */}

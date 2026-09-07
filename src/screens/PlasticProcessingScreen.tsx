@@ -63,7 +63,7 @@ export const PlasticProcessingScreen: React.FC<PlasticProcessingScreenProps> = (
       </div>
 
       {/* Stage-by-Stage Live Visual Pipeline */}
-      <div className="bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-sm border border-slate-200 space-y-3">
+      <div className="bg-white/85 backdrop-blur-md rounded-2xl p-4 shadow-sm border border-white/70 space-y-3 hover:bg-white/95 transition-all">
         <h3 className="font-bold text-xs uppercase tracking-wider text-slate-800">
           Sequential Physical Processing Stages
         </h3>
@@ -182,7 +182,7 @@ export const PlasticProcessingScreen: React.FC<PlasticProcessingScreenProps> = (
 
       {/* Mechanical Telemetry Metrics */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
-        <div className="bg-white rounded-2xl p-3.5 border border-slate-200 shadow-xs">
+        <div className="bg-white/85 backdrop-blur-md rounded-2xl p-3.5 border border-white/70 shadow-xs hover:bg-white/95 transition-all">
           <span className="text-slate-400 block text-[10px] font-bold uppercase">Plastic Input Weight</span>
           <span className="text-xl font-black text-slate-900 mt-1 block">
             {plasticProcessing.inputPlasticWeightKg} kg
@@ -190,7 +190,7 @@ export const PlasticProcessingScreen: React.FC<PlasticProcessingScreenProps> = (
           <span className="text-[10px] text-slate-500">Raw bottles &amp; cups</span>
         </div>
 
-        <div className="bg-white rounded-2xl p-3.5 border border-teal-200 shadow-xs">
+        <div className="bg-white/85 backdrop-blur-md rounded-2xl p-3.5 border border-teal-200/80 shadow-xs hover:bg-white/95 transition-all">
           <span className="text-teal-700 block text-[10px] font-bold uppercase">Liquid Diverted</span>
           <span className="text-xl font-black text-teal-800 mt-1 block">
             {plasticProcessing.liquidRemovedLiters} L
@@ -198,7 +198,7 @@ export const PlasticProcessingScreen: React.FC<PlasticProcessingScreenProps> = (
           <span className="text-[10px] text-teal-600">Saved to Event Tank</span>
         </div>
 
-        <div className="bg-white rounded-2xl p-3.5 border border-slate-200 shadow-xs">
+        <div className="bg-white/85 backdrop-blur-md rounded-2xl p-3.5 border border-white/70 shadow-xs hover:bg-white/95 transition-all">
           <span className="text-slate-400 block text-[10px] font-bold uppercase">Flakes Output</span>
           <span className="text-xl font-black text-emerald-800 mt-1 block">
             {plasticProcessing.shreddedOutputWeightKg} kg
@@ -206,7 +206,7 @@ export const PlasticProcessingScreen: React.FC<PlasticProcessingScreenProps> = (
           <span className="text-[10px] text-emerald-600">Dewatered Flakes</span>
         </div>
 
-        <div className="bg-white rounded-2xl p-3.5 border border-slate-200 shadow-xs">
+        <div className="bg-white/85 backdrop-blur-md rounded-2xl p-3.5 border border-white/70 shadow-xs hover:bg-white/95 transition-all">
           <span className="text-slate-400 block text-[10px] font-bold uppercase">Blade Temperature</span>
           <span className="text-xl font-black text-slate-900 mt-1 block flex items-center gap-1">
             <Thermometer className="w-4 h-4 text-emerald-600" />

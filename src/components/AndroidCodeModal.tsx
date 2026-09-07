@@ -221,6 +221,60 @@ dependencies {
     implementation("com.google.firebase:firebase-database-ktx")
     implementation("com.google.maps.android:maps-compose:4.4.1")
 }`
+  },
+  {
+    path: '.github/workflows/build-apk.yml',
+    language: 'yaml',
+    content: `name: Build Android APK
+
+on:
+  push:
+    branches: [ "**" ]
+    tags: [ "v*" ]
+  pull_request:
+    branches: [ "**" ]
+  workflow_dispatch:
+
+jobs:
+  build-apk:
+    name: Build Android Debug & Release APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'gradle'
+
+      - name: Grant Execute Permission to Gradle Wrapper
+        run: chmod +x gradlew
+
+      - name: Build Debug APK with Gradle
+        run: ./gradlew assembleDebug --stacktrace
+
+      - name: Upload APK as GitHub Download Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ISEA-v1.0.0-debug-apk
+          path: app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 30`
+  },
+  {
+    path: 'README_APK.md',
+    language: 'markdown',
+    content: `# ISEA - Android APK Build & GitHub Automated Deployment Guide
+
+### Automatic APK Build on GitHub:
+1. Push this repository to GitHub (Settings > Export to GitHub).
+2. Go to your GitHub Repository > **Actions** tab.
+3. The "Build Android APK" workflow runs automatically.
+4. Click on the completed run, and under **Artifacts**, download **ISEA-v1.0.0-debug-apk**!
+5. Install directly on your Android phone!`
   }
 ];
 
@@ -248,18 +302,42 @@ export const AndroidCodeModal: React.FC<AndroidCodeModalProps> = ({ isOpen, onCl
               <FileCode className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="font-bold text-sm">Native Android Kotlin Architecture Explorer</h3>
+              <h3 className="font-bold text-sm">Native Android Kotlin Architecture &amp; APK Builder</h3>
               <p className="text-[11px] text-slate-400">
-                com.isea.app • Jetpack Compose • Material 3 • Clean MVVM Architecture
+                com.isea.app • Jetpack Compose • Material 3 • Automated GitHub APK CI/CD
               </p>
             </div>
           </div>
-          <button
-            onClick={onClose}
-            className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
-          >
-            <X className="w-5 h-5" />
-          </button>
+          <div className="flex items-center gap-2">
+            <a
+              href="/ISEA-Android-Project.zip"
+              download="ISEA-Android-Project.zip"
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl transition-all shadow-sm"
+              title="Download full Android project to build in Android Studio or Gradle"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>Download Project .ZIP</span>
+            </a>
+            <button
+              onClick={onClose}
+              className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+
+        {/* GitHub APK Builder Banner */}
+        <div className="bg-emerald-950/60 border-b border-emerald-800/40 px-5 py-2.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs">
+          <div className="text-emerald-300 flex items-center gap-2">
+            <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span>
+              <strong>Automatic APK Build on GitHub:</strong> Push this repo to GitHub &rarr; check the <strong>Actions</strong> tab &rarr; download <strong>ISEA-v1.0.0-debug-apk</strong>!
+            </span>
+          </div>
+          <div className="text-[11px] text-emerald-400/80 shrink-0">
+            Workflows: <code className="bg-slate-900 px-1.5 py-0.5 rounded text-emerald-300">.github/workflows/build-apk.yml</code>
+          </div>
         </div>
 
         {/* Body Split */}
