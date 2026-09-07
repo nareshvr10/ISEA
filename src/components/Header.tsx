@@ -1,7 +1,7 @@
 import React from 'react';
 import { User, Language, Machine } from '../types';
 import { getTranslation } from '../utils/translations';
-import { Bell, Cloud, Cpu, Globe, Shield, RefreshCw } from 'lucide-react';
+import { Bell, Cloud, Cpu, Globe, Shield, RefreshCw, Smartphone } from 'lucide-react';
 
 interface HeaderProps {
   currentUser: User;
@@ -14,6 +14,7 @@ interface HeaderProps {
   unreadAlertCount: number;
   onRefresh: () => void;
   isRefreshing: boolean;
+  onOpenAndroidHub?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -26,7 +27,8 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenNotifications,
   unreadAlertCount,
   onRefresh,
-  isRefreshing
+  isRefreshing,
+  onOpenAndroidHub
 }) => {
   return (
     <header className="sticky top-0 z-30 px-4 sm:px-6 py-3.5 bg-white/85 backdrop-blur-md border-b border-emerald-100/70 shadow-xs">
@@ -62,6 +64,18 @@ export const Header: React.FC<HeaderProps> = ({
             <p className="text-xs font-bold text-slate-800 leading-tight">{currentUser.name}</p>
             <p className="text-[10px] text-teal-600 font-medium">{currentUser.role === 'ADMIN' ? 'Event Admin' : 'Event Operator'} | {currentMachine.name}</p>
           </div>
+
+          {/* Android App Button */}
+          {onOpenAndroidHub && (
+            <button
+              onClick={onOpenAndroidHub}
+              title="Android Application & APK Hub"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 bg-emerald-900 text-emerald-300 hover:bg-emerald-800 rounded-2xl border border-emerald-700/60 text-[11px] font-bold shadow-xs transition-all"
+            >
+              <Smartphone className="w-3.5 h-3.5 text-emerald-400" />
+              <span className="hidden sm:inline">Android App</span>
+            </button>
+          )}
 
           {/* Demo Mode / Cloud Indicator Pill */}
           <button

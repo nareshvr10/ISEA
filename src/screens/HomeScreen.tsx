@@ -37,6 +37,7 @@ interface HomeScreenProps {
   onOpenQrModal: () => void;
   onNavigateToTab: (tab: 'MACHINES' | 'WASTE' | 'ANALYTICS') => void;
   onOpenCodeExplorer: () => void;
+  onOpenAndroidHub?: () => void;
 }
 
 export const HomeScreen: React.FC<HomeScreenProps> = ({
@@ -53,7 +54,8 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
   onOpenCertificate,
   onOpenQrModal,
   onNavigateToTab,
-  onOpenCodeExplorer
+  onOpenCodeExplorer,
+  onOpenAndroidHub
 }) => {
   return (
     <div className="space-y-5 pb-24 animate-in fade-in duration-300">
@@ -492,27 +494,42 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
           </div>
         </div>
 
-        {/* Android Native Kotlin Codebase Inspector Card */}
+        {/* Android Native Kotlin & Application Hub Card */}
         <div className="bg-emerald-950 rounded-3xl p-5 text-white shadow-md border border-emerald-900 flex flex-col justify-between">
           <div>
-            <div className="flex items-center gap-2 mb-1.5">
-              <Cpu className="w-4 h-4 text-emerald-400" />
-              <h3 className="font-bold text-xs uppercase tracking-wider text-emerald-300">
-                Android Jetpack Compose Codebase
-              </h3>
+            <div className="flex items-center justify-between mb-1.5">
+              <div className="flex items-center gap-2">
+                <Cpu className="w-4 h-4 text-emerald-400" />
+                <h3 className="font-bold text-xs uppercase tracking-wider text-emerald-300">
+                  Android Application (APK &amp; PWA)
+                </h3>
+              </div>
+              <span className="px-2 py-0.5 bg-emerald-500/20 text-emerald-300 font-mono text-[10px] rounded-md border border-emerald-400/30">
+                v1.0.0
+              </span>
             </div>
             <p className="text-xs text-emerald-100/70 leading-relaxed">
-              Clean MVVM • Repository Pattern • Firebase Realtime Database • Scoped Storage PDF
+              Install directly to Android home screen or compile the native Jetpack Compose APK via GitHub Actions.
             </p>
           </div>
 
-          <button
-            onClick={onOpenCodeExplorer}
-            className="mt-4 py-2.5 px-4 bg-emerald-800/80 hover:bg-emerald-700 text-white border border-emerald-700 font-bold text-xs rounded-xl transition-all flex items-center justify-between"
-          >
-            <span>Inspect Kotlin Project Files</span>
-            <ArrowRight className="w-3.5 h-3.5 text-emerald-300" />
-          </button>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-4">
+            {onOpenAndroidHub && (
+              <button
+                onClick={onOpenAndroidHub}
+                className="py-2 px-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs rounded-xl transition-all flex items-center justify-center gap-1.5 shadow-sm"
+              >
+                <span>📱 Android App Hub</span>
+              </button>
+            )}
+            <button
+              onClick={onOpenCodeExplorer}
+              className="py-2 px-3 bg-emerald-900/90 hover:bg-emerald-800 text-emerald-200 border border-emerald-700/60 font-semibold text-xs rounded-xl transition-all flex items-center justify-center gap-1"
+            >
+              <span>Inspect Source</span>
+              <ArrowRight className="w-3 h-3 text-emerald-400" />
+            </button>
+          </div>
         </div>
       </div>
     </div>

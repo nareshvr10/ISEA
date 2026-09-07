@@ -29,6 +29,8 @@ import { UniversalInputSimulatorModal } from './components/UniversalInputSimulat
 import { PdfPreviewModal } from './components/PdfPreviewModal';
 import { EventQrModal } from './components/EventQrModal';
 import { AndroidCodeModal } from './components/AndroidCodeModal';
+import { PWAInstallBanner } from './components/PWAInstallBanner';
+import { AndroidAppHubModal } from './components/AndroidAppHubModal';
 
 import { LoginScreen } from './screens/LoginScreen';
 import { HomeScreen } from './screens/HomeScreen';
@@ -65,6 +67,7 @@ export function App() {
   const [activePdfReport, setActivePdfReport] = useState<ReportItem | null>(null);
   const [isEventQrOpen, setIsEventQrOpen] = useState(false);
   const [isCodeModalOpen, setIsCodeModalOpen] = useState(false);
+  const [isAndroidHubOpen, setIsAndroidHubOpen] = useState(false);
 
   // Data & Telemetry State
   const [machines, setMachines] = useState<Machine[]>(allMachines);
@@ -261,6 +264,9 @@ export function App() {
           </div>
         )}
 
+        {/* PWA Install Banner */}
+        <PWAInstallBanner onOpenAppHub={() => setIsAndroidHubOpen(true)} />
+
         {/* Global Header */}
         <Header
           currentUser={currentUser}
@@ -273,6 +279,7 @@ export function App() {
           unreadAlertCount={alerts.filter((a) => a.severity === 'CRITICAL' || a.severity === 'WARNING').length}
           onRefresh={handleRefresh}
           isRefreshing={isRefreshing}
+          onOpenAndroidHub={() => setIsAndroidHubOpen(true)}
         />
 
         {/* Dynamic Screen View */}
@@ -339,6 +346,7 @@ export function App() {
                   onOpenQrModal={() => setIsEventQrOpen(true)}
                   onNavigateToTab={(t) => setActiveTab(t)}
                   onOpenCodeExplorer={() => setIsCodeModalOpen(true)}
+                  onOpenAndroidHub={() => setIsAndroidHubOpen(true)}
                 />
               )}
 
@@ -433,6 +441,16 @@ export function App() {
       <AndroidCodeModal
         isOpen={isCodeModalOpen}
         onClose={() => setIsCodeModalOpen(false)}
+      />
+
+      {/* Android App Hub & Installer Modal */}
+      <AndroidAppHubModal
+        isOpen={isAndroidHubOpen}
+        onClose={() => setIsAndroidHubOpen(false)}
+        onOpenCodeExplorer={() => {
+          setIsAndroidHubOpen(false);
+          setIsCodeModalOpen(true);
+        }}
       />
 
       {/* Geometric Balance Machine Status Floating Badge */}
